@@ -10,7 +10,7 @@ class Func:
     def __init__(self, func, args, kwargs):
         self.__args = args
         self.__kwargs = kwargs
-        self.__func = func
+        self.__func: Callable = func
 
     def __call__(self):
         return self.__func(*self.__args, **self.__kwargs)
@@ -24,7 +24,7 @@ class Func:
         return self.__kwargs
 
     @property
-    def func(self):
+    def func(self) -> Callable:
         return self.__func
 
 
@@ -67,6 +67,7 @@ def dog_bark(func):
     print("eat before wang~!")
     result = func()
     print(func.args, func.kwargs)
+    print(func.func)
     print("eat after wang~!")
     return result
 
@@ -77,6 +78,7 @@ def dog_bark_p(func, a, b):
     print(f"eat before {'wang~! ' * a}")
     result = func()
     print(func.args, func.kwargs) # 获得被装饰函数的参数列表
+    print(func.func)
     print(f"eat before {'wang~! ' * b}")
     return result
 
