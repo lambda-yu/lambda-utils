@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, Tuple, Dict
 from functools import wraps
 
 """
@@ -8,8 +8,8 @@ from functools import wraps
 
 class Func:
     def __init__(self, func, args, kwargs):
-        self.__args = args
-        self.__kwargs = kwargs
+        self.__args: Tuple = args
+        self.__kwargs: Dict = kwargs
         self.__func: Callable = func
 
     def __call__(self):
@@ -91,10 +91,10 @@ def dog_eat(a):
 
 # 这是使用一个带参装饰器
 @dog_bark_p(b=5, a=3)
-def dog_eat_p(a):
+def dog_eat_p(a, b):
     [print(f"dog eat hot dog {i}~!") for i in range(a)]
 
 
 if __name__ == '__main__':
     dog_eat(2)
-    dog_eat_p(a=3)
+    dog_eat_p(3, b=4)
