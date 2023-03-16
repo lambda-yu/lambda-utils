@@ -79,7 +79,7 @@ def dog_bark_p(func, a, b):
     result = func()
     print(func.args, func.kwargs) # 获得被装饰函数的参数列表
     print(func.func)
-    print(f"eat before {'wang~! ' * b}")
+    print(f"eat after {'wang~! ' * b}")
     return result
 
 
